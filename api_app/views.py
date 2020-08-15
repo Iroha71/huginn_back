@@ -1,16 +1,21 @@
 from django.http import HttpResponse
 from rest_framework import viewsets
-from api_app.models import Project, Task
-from api_app.serializers import ProjectSerializer
+from api_app.models import Project, Task, Domain
+from api_app.serializers import ProjectSerializer, DomainSerializer, TaskSerializer
 import json
 
 # Create your views here.
+class DomainViewSet(viewsets.ModelViewSet):
+  queryset = Domain.objects.all()
+  serializer_class = DomainSerializer
+
 class ProjectViewSet(viewsets.ModelViewSet):
   queryset = Project.objects.all()
   serializer_class = ProjectSerializer
 
 class TaskViewSet(viewsets.ModelViewSet):
   queryset = Task.objects.all()
+  serializer_class = TaskSerializer
 
 def calc_work_progress(request, project_id):
   total_tasks = Task.objects.filter(project_id = project_id).count()
