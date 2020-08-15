@@ -6,3 +6,6 @@ from api_app.serializers import ProjectSerializer
 class ProjectViewSet(viewsets.ModelViewSet):
   queryset = Project.objects.all()
   serializer_class = ProjectSerializer
+
+class TaskViewSet(viewsets.ModelViewSet):
+  queryset = Task.objects.all()
