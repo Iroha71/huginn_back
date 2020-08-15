@@ -19,5 +19,6 @@ from api_app.urls import router as api_router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(api_router.urls)),
+    path('api/', include('api_app.urls')),
+    # path('api/get_work_progress', include('api_app.urls')),
 ]
